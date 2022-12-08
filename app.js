@@ -1,7 +1,6 @@
 //jshint esversion:6
 
 //requiring
-require('dotenv').config()
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
