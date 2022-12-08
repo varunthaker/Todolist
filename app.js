@@ -1,6 +1,7 @@
 //jshint esversion:6
 
 //requiring
+require('dotenv').config()
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
@@ -9,6 +10,7 @@ const _ = require('lodash')
 //setting Run time Env to express
 const app = express();
 
+
 //setting ejs
 app.set('view engine', 'ejs');
 
@@ -16,7 +18,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb+srv://vthakar3:Varun%401994@cluster0.waybqqi.mongodb.net/todolistDB") //connecting to a MongoDb server host
+mongoose.connect("mongodb://127.0.0.1:27017/todoListDB") //connecting to a MongoDb server host
 
 // Schema & modelin Item 
 const itemsSchema = {   // defining a schema
@@ -58,7 +60,7 @@ app.get("/", function(req, res) {
     if(foundList.length===0){
         Item.insertMany(defaultItems, function(error){
     if (error){
-      console.log("Error")
+      console.log("Error in insert")
     } else {
       console.log("Initial Items added")
     }
